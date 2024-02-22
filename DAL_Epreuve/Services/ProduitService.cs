@@ -114,7 +114,7 @@ namespace DAL_Epreuve.Services
             }
         }
 
-        public IEnumerable<Produit> GetByCategorie(int id)
+        /*public IEnumerable<Produit> GetByCategorie(int id)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -146,6 +146,6 @@ namespace DAL_Epreuve.Services
                     }
                 }
             }
-        }
+        }*/
     }
 }

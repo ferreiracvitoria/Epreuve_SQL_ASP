@@ -24,12 +24,11 @@ namespace BLL_Epreuve.Services
         {
             return _CritereEcologiqueRepository.Get().Select(d => d.ToBLL());
         }
-        /*public CritereEcologique Get(int id)
+        public CritereEcologique Get(int id)
         {
-            CritereEcologique entity = _CritereEcologiqueRepository.Get(id).ToBLL();
-            entity.AddGroupProduits(_ProduitRepository.GetByCritereEcologique(id).Select(d => d.ToBLL()));
-            return entity;
-        }*/
+            return _CritereEcologiqueRepository.Get(id).ToBLL();
+        }
+    
         public int Insert(CritereEcologique data)
         {
             return _CritereEcologiqueRepository.Insert(data.ToDAL());
@@ -42,6 +41,7 @@ namespace BLL_Epreuve.Services
         {
             _CritereEcologiqueRepository.Delete(id);
         }
+
     }
 }
-}
+
