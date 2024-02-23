@@ -8,5 +8,6 @@ namespace Shared.Repositories
 {
     public interface IMediaRepository<TEntity> : ICRUDRepository<TEntity, int> where TEntity : class
     {
+        public IEnumerable<TEntity>  GetMediaForProduit(int id_Produit);
     }
 }

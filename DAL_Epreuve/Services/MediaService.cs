@@ -103,5 +103,26 @@ namespace DAL_Epreuve.Services
                 }
             }
         }
+
+        public IEnumerable<Media> GetMediaForProduit(int id_Produit)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM [Media] WHERE [Id_Produit] = @id_Produit";
+                    command.CommandType = CommandType.Text;
+                    command.Parameters.AddWithValue("Id_Produit", id_Produit);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToMedia();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

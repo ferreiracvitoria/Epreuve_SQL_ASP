@@ -11,10 +11,12 @@ namespace ASPEpreuve.Controllers
     public class ProduitController : Controller
     {
         private readonly IProduitRepository<Produit> _produitRepository;
+        private readonly IMediaRepository<Media> _mediaRepository;
 
-        public ProduitController(IProduitRepository<Produit> produitRepository) 
+        public ProduitController(IProduitRepository<Produit> produitRepository, IMediaRepository<Media> mediaRepository)
         {
             _produitRepository = produitRepository;
+            _mediaRepository = mediaRepository;
         }
 
         public ActionResult Index()
@@ -27,6 +29,10 @@ namespace ASPEpreuve.Controllers
         public ActionResult Details(int id)
         {
             ProduitDetailsViewModel model = _produitRepository.Get(id).ToDetails();
+            var medias = _mediaRepository.GetMediaForProduit(id);
+            var mediaUrls = medias.Select(d => d.UrlImage).ToList();
+
+            ViewBag.MediaUrls = mediaUrls;
             return View(model);
         }
 

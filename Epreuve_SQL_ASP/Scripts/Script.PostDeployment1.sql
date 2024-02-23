@@ -42,3 +42,12 @@ INSERT INTO [dbo].[Produit] ([Id_CritereEcologique], [Id_Categorie], [Nom], [Des
 
 -- Produit 5
 (5, 1, 'Meuble en bois certifié FSC', 'Meuble en bois provenant de forêts gérées durablement, certifié FSC.', 299.99, 30);
+
+
+EXEC SP_Media_Insert 1, 'unnamed.jpg';
+EXEC SP_Media_Insert 2, 'SacCotton.jpg';
+EXEC SP_Media_Insert 3, 'BarresEnergetiques.jpg';
+EXEC SP_Media_Insert 4, 'Shampooing.png';
+EXEC SP_Media_Insert 5, 'Meuble.webp';
+
+

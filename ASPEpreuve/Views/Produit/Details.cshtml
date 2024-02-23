@@ -9,6 +9,12 @@
 <div>
     <h4>ProduitDetailsViewModel</h4>
     <hr />
+    <div>
+        @foreach (var imageUrl in ViewBag.MediaUrls)
+        {
+            <img src="@Url.Content($"~/assets/img/{imageUrl}")" alt="Product Image" class="image-details" />
+        }
+    </div>
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Nom)
