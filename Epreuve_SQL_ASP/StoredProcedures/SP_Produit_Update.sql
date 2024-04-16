@@ -4,14 +4,14 @@
 	@description VARCHAR(MAX),
 	@prix DECIMAL,
 	@stock INT,
-	@id_critereEcologique INT,
-	@id_categorie INT
+	@critereEcologique NVARCHAR(64),
+	@categorie NVARCHAR(64)
 AS
 	UPDATE [Produit] 
 		SET [Nom] = @nom,
 			[Description] = @description,
 			[Prix] = @prix,
 			[Stock] = @stock,
-			[Id_CritereEcologique] = @id_critereEcologique,
-			[Id_Categorie] = @id_categorie
+			[CritereEcologique] = @critereEcologique,
+			[Categorie] = @categorie
 		WHERE [Id_Produit] = @id_produit

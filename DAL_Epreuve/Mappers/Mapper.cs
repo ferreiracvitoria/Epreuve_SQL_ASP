@@ -51,10 +51,9 @@ namespace DAL_Epreuve.Mappers
         public static CritereEcologique ToCritereEcologique(this IDataRecord record)
         {
             if (record is null) return null;
-            return new CritereEcologique()
+            return new CritereEcologique
             {
-                Id_CritereEcologique = (int)record["Id_CritereEcologique"],
-                Nom = (string)record["Nom"],
+                Nom = (string)record[nameof(CritereEcologique.Nom)],
             };
         }
 
@@ -71,10 +70,9 @@ namespace DAL_Epreuve.Mappers
         public static Categorie ToCategorie(this IDataRecord record)
         {
             if (record is null) return null;
-            return new Categorie()
+            return new Categorie
             {
-                Id_Categorie = (int)record["Id_Commande"],
-                Nom = (string)record["Nom"]
+                Nom = (string)record[nameof(Categorie.Nom)]
             };
         }
 

@@ -27,7 +27,7 @@ INSERT INTO [dbo].[Categorie] ([Nom]) VALUES
 ('Produits de beauté');
 
 -- Insertion de données fictives dans la table Produit avec critères écologiques
-INSERT INTO [dbo].[Produit] ([Id_CritereEcologique], [Id_Categorie], [Nom], [Description], [Prix], [Stock]) VALUES
+INSERT INTO [dbo].[Produit] ([CritereEcologique], [Categorie], [Nom], [Description], [Prix], [Stock]) VALUES
 -- Produit 1
 (1, 3, 'Ordinateur portable écologique', 'Ordinateur portable éco-responsable avec faible consommation d''énergie.', 1200.00, 50),
 

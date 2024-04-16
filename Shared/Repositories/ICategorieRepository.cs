@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Shared.Repositories
 {
-    public interface ICategorieRepository<TEntity> : ICRUDRepository<TEntity, int> where TEntity : class
+    public interface ICategorieRepository<TEntity> 
     {
+        IEnumerable<TEntity> Get();
     }
 }

@@ -38,6 +38,69 @@ namespace DAL_Epreuve.Services
                 }
             }
         }
+        
+        public IEnumerable<Produit> GetByCategorie(string categorie)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SP_Produit_GetByCategorie";
+                    command.Parameters.AddWithValue("Categorie", categorie);
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToProduit();
+                        }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<Produit> GetByCritere(string critereEco)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SP_Produit_GetByCritere";
+                    command.Parameters.AddWithValue("CritereEcologique", critereEco);
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToProduit();
+                        }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<Produit> GetByNom(string nomProduit)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = "SP_Produit_GetByNom";
+                    command.Parameters.AddWithValue("NomProduit", nomProduit);
+                    command.CommandType = CommandType.StoredProcedure;
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return reader.ToProduit();
+                        }
+                    }
+                }
+            }
+        }
         public Produit Get(int id)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -66,8 +129,8 @@ namespace DAL_Epreuve.Services
                     command.CommandText = "SP_Produit_Insert";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("id", data.Id_Produit);
-                    command.Parameters.AddWithValue("id_Categorie", data.Id_Categorie);
-                    command.Parameters.AddWithValue("id_CritereEcologique", data.Id_CritereEcologique);
+                    command.Parameters.AddWithValue("Categorie", data.Categorie);
+                    command.Parameters.AddWithValue("CritereEcologique", data.CritereEcologique);
                     command.Parameters.AddWithValue("nom", data.Nom);
                     command.Parameters.AddWithValue("description", data.Description);
                     command.Parameters.AddWithValue("prix", data.Prix);
@@ -86,8 +149,8 @@ namespace DAL_Epreuve.Services
                     command.CommandText = "SP_Produit_Update";
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("id", data.Id_Produit);
-                    command.Parameters.AddWithValue("Id_Categorie", data.Id_Categorie);
-                    command.Parameters.AddWithValue("id_CritereEcologique", data.Id_CritereEcologique);
+                    command.Parameters.AddWithValue("Categorie", data.Categorie);
+                    command.Parameters.AddWithValue("CritereEcologique", data.CritereEcologique);
                     command.Parameters.AddWithValue("nom", data.Nom);
                     command.Parameters.AddWithValue("description", data.Description);
                     command.Parameters.AddWithValue("prix", data.Prix);
@@ -112,40 +175,6 @@ namespace DAL_Epreuve.Services
                         throw new ArgumentException(nameof(id), $"L'identifiant {id} n'est pas das la BD");
                 }
             }
-        }
-
-        /*public IEnumerable<Produit> GetByCategorie(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand command = connection.CreateCommand())
-                {
-                    command.CommandText = "SELECT * FROM [Produit] WHERE [Id_Categorie] = @id";
-                    command.Parameters.AddWithValue("id", id);
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read()) yield return reader.ToProduit();
-                    }
-                }
-            }
-        }
-
-        public IEnumerable<Produit> GetByCritereEcologique(int id)
-        {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
-            {
-                using (SqlCommand command = connection.CreateCommand())
-                {
-                    command.CommandText = "SELECT * FROM [Produit] WHERE [Id_CritereEcologique] = @id";
-                    command.Parameters.AddWithValue("id", id);
-                    connection.Open();
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read()) yield return reader.ToProduit();
-                    }
-                }
-            }
-        }*/
+        }       
     }
 }

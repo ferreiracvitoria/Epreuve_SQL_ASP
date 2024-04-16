@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Shared.Repositories
 {
-    public interface ICritereEcologiqueRepository<TEntity> : ICRUDRepository<TEntity, int> where TEntity : class
+    public interface ICritereEcologiqueRepository<TEntity> 
     {
+        IEnumerable<TEntity> Get();
     }
 }

@@ -3,9 +3,9 @@
 	@description VARCHAR(MAX),
 	@prix DECIMAL,
 	@stock INT,
-	@id_critereEcologique INT,
-	@id_categorie INT
+	@critereEcologique NVARCHAR(64),
+	@categorie NVARCHAR(64) 
 AS
-	INSERT INTO [Produit] ([Nom], [Description],[Prix], [Stock], [Id_CritereEcologique], [Id_Categorie])
+	INSERT INTO [Produit] ([Nom], [Description],[Prix], [Stock], [CritereEcologique], [Categorie])
 		OUTPUT [inserted].[Id_Produit]
-		VALUES (@nom, @description, @prix, @stock, @id_critereEcologique ,@id_categorie )
+		VALUES (@nom, @description, @prix, @stock, @critereEcologique ,@categorie )

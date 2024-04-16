@@ -1,8 +1,8 @@
 ﻿CREATE PROCEDURE [dbo].[SP_Produit_GetAll]
 AS
 	SELECT	[Id_Produit],
-			[Id_CritereEcologique],
-			[Id_Categorie],
+			[CritereEcologique],
+			[Categorie],
 			[Nom],
 			[Description],
 			[Prix],

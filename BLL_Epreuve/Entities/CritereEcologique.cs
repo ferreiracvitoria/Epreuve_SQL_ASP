@@ -6,15 +6,12 @@ namespace BLL_Epreuve.Entities
 {
     public class CritereEcologique
     {
-        public int Id_CritereEcologique { get; set; }
         public string Nom {  get; set; }
 
 
-        public CritereEcologique(int id_CritereEcologique, string nom)
+        public CritereEcologique( string nom)
         {
-            Id_CritereEcologique = id_CritereEcologique;
             Nom = nom;
-
         }
     }
 }

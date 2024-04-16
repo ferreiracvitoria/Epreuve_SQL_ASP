@@ -2,8 +2,8 @@
 	@id_produit INT
 AS
 	SELECT	[Id_Produit],
-			[Id_CritereEcologique],
-			[Id_Categorie],
+			[CritereEcologique],
+			[Categorie],
 			[Nom],
 			[Description],
 			[Prix],

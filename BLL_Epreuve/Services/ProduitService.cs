@@ -40,15 +40,5 @@ namespace BLL_Epreuve.Services
             _repository.Delete(id);
         }
 
-        /*public IEnumerable<Produit> GetByCategorie(int id)
-        {
-            return _repository.GetByCategorie().Select(d => d.ToBLL());
-        }
-
-        public IEnumerable<Produit> GetByCritereEcologique(int id)
-        {
-            return _repository.GetByCritereEcologique().Select(d => d.ToBLL());
-        }*/
-
     }
 }

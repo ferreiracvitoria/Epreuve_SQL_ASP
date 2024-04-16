@@ -19,27 +19,9 @@ namespace BLL_Epreuve.Services
             _CritereEcologiqueRepository = CritereEcologiqueRepository;
             _ProduitRepository = ProduitRepository;
         }
-
         public IEnumerable<CritereEcologique> Get()
         {
             return _CritereEcologiqueRepository.Get().Select(d => d.ToBLL());
-        }
-        public CritereEcologique Get(int id)
-        {
-            return _CritereEcologiqueRepository.Get(id).ToBLL();
-        }
-    
-        public int Insert(CritereEcologique data)
-        {
-            return _CritereEcologiqueRepository.Insert(data.ToDAL());
-        }
-        public void Update(CritereEcologique data)
-        {
-            _CritereEcologiqueRepository.Update(data.ToDAL());
-        }
-        public void Delete(int id)
-        {
-            _CritereEcologiqueRepository.Delete(id);
         }
 
     }

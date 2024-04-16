@@ -2,34 +2,34 @@
 using System.Collections.Generic;
 using System.Text;
 using DAL = DAL_Epreuve.Entities;
-using BLL = BLL_Epreuve.Entities;
+using BLL_Epreuve.Entities;
 
 namespace BLL_Epreuve.Mappers
 {
     public static class Mapper
     {
         #region Produit
-        public static BLL.Produit ToBLL(this DAL.Produit entity)
+        public static Produit ToBLL(this DAL.Produit entity)
         {
             if (entity is null) return null;
-            return new BLL.Produit(
+            return new Produit(
                 entity.Id_Produit,
-                entity.Id_CritereEcologique,
-                entity.Id_Categorie,
+                entity.CritereEcologique,
+                entity.Categorie,
                 entity.Nom,
                 entity.Description,
                 entity.Prix,
                 entity.Stock);
         }
 
-        public static DAL.Produit ToDAL(this BLL.Produit entity)
+        public static DAL.Produit ToDAL(this Produit entity)
         {
             if (entity is null) return null;
             return new DAL.Produit()
             {
                 Id_Produit = entity.Id_Produit,
-                Id_CritereEcologique = entity.Id_CritereEcologique,
-                Id_Categorie = entity.Id_Categorie,
+                CritereEcologique = entity.CritereEcologique,
+                Categorie = entity.Categorie,
                 Nom = entity.Nom,
                 Description = entity.Description,
                 Prix = entity.Prix,
@@ -39,58 +39,40 @@ namespace BLL_Epreuve.Mappers
         #endregion
 
         #region Critere Ecologique
-        public static BLL.CritereEcologique ToBLL(this DAL.CritereEcologique entity)
+        public static CritereEcologique ToBLL(this DAL.CritereEcologique entity)
         {
             if (entity is null) return null;
-            return new BLL.CritereEcologique(
-                entity.Id_CritereEcologique,
-                entity.Nom);
+            return new CritereEcologique(
+                entity.Nom
+            );
         }
 
-        public static DAL.CritereEcologique ToDAL(this BLL.CritereEcologique entity)
-        {
-            if (entity is null) return null;
-            return new DAL.CritereEcologique()
-            {
-                Id_CritereEcologique = entity.Id_CritereEcologique,
-                Nom = entity.Nom,
-            };
-        }
+        
 
         #endregion
 
         #region Categorie
-        public static BLL.Categorie ToBLL(this DAL.Categorie entity)
+        public static Categorie ToBLL(this DAL.Categorie entity)
         {
             if (entity is null) return null;
-            return new BLL.Categorie(
-                entity.Id_Categorie,
+            return new Categorie(
                 entity.Nom);
         }
 
-        public static DAL.Categorie ToDAL(this BLL.Categorie entity)
-        {
-            if (entity is null) return null;
-            return new DAL.Categorie()
-            {
-                Id_Categorie = entity.Id_Categorie,
-                Nom = entity.Nom,
-            };
-        }
 
         #endregion
 
         #region Media
-        public static BLL.Media ToBLL(this DAL.Media entity)
+        public static Media ToBLL(this DAL.Media entity)
         {
             if (entity is null) return null;
-            return new BLL.Media(
+            return new Media(
                 entity.Id_Media,
                 entity.Id_Produit,
                 entity.UrlImage);
         }
 
-        public static DAL.Media ToDAL(this BLL.Media entity)
+        public static DAL.Media ToDAL(this Media entity)
         {
             if (entity is null) return null;
             return new DAL.Media()
@@ -101,6 +83,19 @@ namespace BLL_Epreuve.Mappers
             };
         }
 
+        #endregion
+
+        #region Section
+        public static Section ToBLL(this DAL.Section entity)
+        {
+            if (entity is null) return null;
+            return new Section(
+                entity.Id_Section,
+                entity.Id_Produit,
+                entity.Id_Commande,
+                entity.Quantite
+            );
+        }
         #endregion
     }
 }
