@@ -14,8 +14,8 @@ namespace DAL_Epreuve.Mappers
             return new Produit()
             {
                 Id_Produit = (int)record["Id_Produit"],
-                Id_CritereEcologique = (int)record["Id_CritereEcologique"],
-                Id_Categorie = (int)record["Id_Categorie"],
+                CritereEcologique = (string)record["CritereEcologique"],
+                Categorie = (string)record["Categorie"],
                 Nom = (string)record["Nom"],
                 Description = (string)record["Description"],
                 Prix = (decimal)record["Prix"],

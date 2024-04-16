@@ -8,9 +8,9 @@ namespace Shared.Repositories
 {
     public interface IProduitRepository<TEntity> : ICRUDRepository<TEntity, int> where TEntity : class
     {
-        /* public IEnumerable<TEntity> GetByCategorie(int id);
-         public IEnumerable<TEntity> GetByCritereEcologique(int id);*/
-        /*public IEnumerable<TEntity> GetMediaForProduit(int id_Produit);*/
+        IEnumerable<TEntity> GetByCategorie(string categorie);
+        IEnumerable<TEntity> GetByCritere(string critereEcologique);
+        IEnumerable<TEntity> GetByNom(string nomProduit);
 
 
     }

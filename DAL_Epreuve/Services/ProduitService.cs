@@ -60,14 +60,14 @@ namespace DAL_Epreuve.Services
             }
         }
 
-        public IEnumerable<Produit> GetByCritere(string critereEco)
+        public IEnumerable<Produit> GetByCritere(string critereEcologique)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandText = "SP_Produit_GetByCritere";
-                    command.Parameters.AddWithValue("CritereEcologique", critereEco);
+                    command.Parameters.AddWithValue("CritereEcologique", critereEcologique);
                     command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())

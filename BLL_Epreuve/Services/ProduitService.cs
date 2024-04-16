@@ -27,6 +27,20 @@ namespace BLL_Epreuve.Services
         {
             return _repository.Get(id).ToBLL();
         }
+        public IEnumerable<Produit> GetByCategorie(string categorie)
+        {
+            return _repository.GetByCategorie(categorie).Select(d => d.ToBLL());
+        }
+
+        public IEnumerable<Produit> GetByCritere(string critereEcologique)
+        {
+            return _repository.GetByCritere(critereEcologique).Select(d => d.ToBLL());
+        }
+
+        public IEnumerable<Produit> GetByNom(string nomProduit)
+        {
+            return _repository.GetByNom(nomProduit).Select(d => d.ToBLL());
+        }
         public int Insert(Produit data)
         {
             return _repository.Insert(data.ToDAL());
